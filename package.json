@@ -1,0 +1,23 @@
+{
+  "name": "redot-academy",
+  "module": "index.ts",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.9",
+    "@types/bun": "latest",
+    "tailwindcss": "^4.0.9",
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev packages/vitepress",
+    "docs:build": "vitepress build packages/vitepress",
+    "docs:preview": "vitepress preview packages/vitepress"
+  }
+}
