@@ -1,12 +1,30 @@
+import type { SupabaseClient } from '@supabase/supabase-js'
+
 import { createClient } from '@supabase/supabase-js'
 
 // Global Supabase client
-const client = createClient(
-  'https://fnsqodgydunmhpxwfcvh.supabase.co',
-  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZuc3FvZGd5ZHVubWhweHdmY3ZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI5NDE3NTYsImV4cCI6MjA1ODUxNzc1Nn0.zHMM_UISNd6VlC_OEpbspekITN81F6_onoZpkotCmqY`
-)
+let client: SupabaseClient | null = null
 
-export default () => {
+export default (options?: { url?: string, secret?: string }) => {
+  // Default to public key
+  let key = import.meta.env.VITE_SUPABASE_PUB_KEY
+
+  // Check if a secret key was provided
+  if (options && options.secret) {
+    // override public key with given secret key
+    key = options.secret
+  }
+
+  if (!client) {
+    const url = options && options.url ? options.url : import.meta.env.VITE_SUPABASE_URL
+
+    if (!url || !key) {
+      throw new Error('Supabase URL and Key are required')
+    }
+
+    client = createClient(url, key)
+  }
+
   return {
     client,
   }

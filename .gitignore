@@ -106,6 +106,9 @@ web_modules/
 .env.production.local
 .env.local
 
+# other environment variable files
+.build.*
+
 # parcel-bundler cache (https://parceljs.org/)
 
 .parcel-cache
