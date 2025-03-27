@@ -1,17 +1,18 @@
 // https://vitepress.dev/guide/custom-theme
-import { h } from 'vue'
 import type { Theme } from 'vitepress'
+import { createPinia } from 'pinia'
+import Layout from './Layout.vue'
 import DefaultTheme from 'vitepress/theme'
+
+import RALogin from './components/RALogin.vue'
+
 import './style.css'
 
 export default {
   extends: DefaultTheme,
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-    })
-  },
+  Layout,
   enhanceApp({ app, router, siteData }) {
-    // ...
+    app.use(createPinia())
+    app.component('RALogin', RALogin)
   }
 } satisfies Theme
