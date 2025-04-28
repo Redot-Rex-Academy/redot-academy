@@ -1,3 +1,5 @@
+import type { ProgressIdentifier } from './theme/models/ProgressIdentifiers'
+
 import { defineConfig, Header } from 'vitepress'
 import tailwindcss from '@tailwindcss/vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
@@ -13,6 +15,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
+      { text: 'Test', link: '/pages/tests/progress-tracking-test' },
       { text: 'Home', link: '/' },
       { text: 'User Guide', link: '/pages/user-guide' },
       { text: 'Tracks', link: '/pages/tracks/_index' },
@@ -77,9 +80,12 @@ export default defineConfig({
       headers.forEach((header) => {
         const { level, slug, children, title, link } = header
 
+        // We only track h2
+        if (level !== 2) return
+
         const progressIdentifier: ProgressIdentifier = {
           title: pageData.title,
-          identifier: `${pageData.filePath}/${slug}`,
+          identifier: `${pageData.filePath.replace('.md', '')}/${slug}`,
           header: title,
           level,
           tutorialType: pageData.frontmatter.tutorialType,
@@ -139,11 +145,3 @@ export default defineConfig({
     },
   },
 })
-
-interface ProgressIdentifier {
-  title: string,
-  identifier: string,
-  header: string,
-  level: number,
-  tutorialType: 'track' | 'tutorial' | 'factoid',
-}

@@ -25,6 +25,7 @@
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
     "@supabase/supabase-js": "^2.49.3",
+    "@vueuse/core": "^13.1.0",
     "pinia": "^3.0.1"
   }
 }
