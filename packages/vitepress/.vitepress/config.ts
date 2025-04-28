@@ -69,7 +69,7 @@ export default defineConfig({
     'auth/login.md': '/auth/login.md',
   },
 
-  transformPageData: async (pageData) => {
+  /*transformPageData: async (pageData) => {
     if (process.env.NODE_ENV !== 'production' || !pageData.frontmatter.tutorialType) {
       return
     }
@@ -131,7 +131,7 @@ export default defineConfig({
         console.error('Error when inserting identifiers', error)
       }
     }
-  },
+  },*/
 
   vite: {
     plugins: [
