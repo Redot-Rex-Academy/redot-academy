@@ -109,4 +109,4 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 ```
 
-This setup is for player movement in a simple sidesrolling 2d game, but you can take this code anywhere from here.  Whether you want gravity or not, or the ability to jump or move up and down, is really down to what you want your player to be able to do. From here you can build onto the basic concept and create a truely awesome 2D game character.
+This player setup is for a simple sidesrolling 2d game, but you can take this code anywhere from here.  Whether you want gravity or not, or the ability to jump or move up and down, is really down to what you want your player to be able to do. From here you can build onto the basic concept and create a truely awesome 2D game character.
