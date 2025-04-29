@@ -5,7 +5,6 @@ import { nextTick, provide, onMounted } from 'vue'
 import Bookmark from './components/RABookmark.vue'
 import BackLink from './components/RABackLink.vue'
 import ProfileNavItem from './components/RAProfileNavBarItem.vue'
-import ProgressTracker from './components/RAProgressTracker.vue'
 
 const { isDark } = useData()
 
@@ -48,7 +47,6 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
     <template #nav-bar-content-after>
       <ClientOnly>
         <ProfileNavItem />
-        <ProgressTracker />
       </ClientOnly>
     </template>
     <template #sidebar-nav-before></template>
@@ -58,7 +56,7 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
         <BackLink />
       </ClientOnly>
     </template>
-    </CustomLayout>
+  </CustomLayout>
 </template>
 
 <style>

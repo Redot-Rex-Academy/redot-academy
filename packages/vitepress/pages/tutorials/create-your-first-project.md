@@ -4,15 +4,15 @@ title: Create your first project
 
 # Create your first project
 When you first launch `Redot` you will be met with an empty project manager.
-![The Redot project manager](/assets/images/project-manager-empty.png)
+![The Redot project manager](../../assets/images/3d-3rdp-action-rpg/project-manager-empty.png)
 
 You'r first order of business is thus to create your own project. You do that by
 clicking the `Create`button.
-![The create new project button](/assets/images/project-manager-create-button.png)
+![The create new project button](../../assets/images/3d-3rdp-action-rpg/project-manager-create-button.png)
 
 A new window appears where you can name your project and choose where it is stored
 plus a few extra settings.
-![Create project window](/assets/images/new-project-window.png)
+![Create project window](../../assets/images/3d-3rdp-action-rpg/new-project-window.png)
 
 ::: info recommendation
 It is not too important where you chose to store your projects but we recommend having

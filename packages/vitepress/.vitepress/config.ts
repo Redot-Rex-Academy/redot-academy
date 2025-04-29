@@ -1,6 +1,5 @@
-import type { ProgressIdentifier } from './theme/models/ProgressIdentifiers'
-
-import { defineConfig } from 'vitepress'
+// import type { ProgressIdentifier } from './theme/models/ProgressIdentifiers'
+import { defineConfig, /* Header */ } from 'vitepress'
 import tailwindcss from '@tailwindcss/vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
@@ -15,7 +14,6 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Test', link: '/pages/tests/progress-tracking-test' },
       { text: 'Home', link: '/' },
       { text: 'User Guide', link: '/pages/user-guide' },
       { text: 'Tracks', link: '/pages/tracks/_index' },
@@ -27,6 +25,7 @@ export default defineConfig({
         {
           text: 'Tracks',
           items: [
+		{ text: 'Waste-Invaders 2D Beginners', link: '/pages/tracks/2d-waste-invaders' },
             { text: '3rd Person 3D Action RPG', link: '/pages/tracks/3d-3rdp-action-rpg' },
           ],
         },
@@ -34,8 +33,12 @@ export default defineConfig({
           text: 'Tutorials',
           items: [
             { text: 'Create your first project', link: '/pages/tutorials/create-your-first-project' },
-            { text: 'Create your initial 3D scene', link: '/pages/tutorials/set-up-initial-3d-scene' },
+            { text: 'Create your initial scene', link: '/pages/tutorials/set-up-initial-3d-scene' },
             { text: '3rd person 3D Character ', link: '/pages/tutorials/character_controller_3d_3rdp' },
+            { text: 'GameManagers and their uses', link: '/pages/tutorials/game-managers' },
+            { text: 'Autoloading scripts', link: '/pages/tutorials/autoload' },
+            { text: '2D sprite basics', link: '/pages/tutorials/a-word-on-sprites' },
+            { text: '2D player Character ', link: '/pages/tutorials/player-controller-2d' },
           ],
         },
       ],
@@ -68,8 +71,8 @@ export default defineConfig({
   rewrites: {
     'auth/login.md': '/auth/login.md',
   },
-
-  /*transformPageData: async (pageData) => {
+/**
+  transformPageData: async (pageData) => {
     if (process.env.NODE_ENV !== 'production' || !pageData.frontmatter.tutorialType) {
       return
     }
@@ -80,12 +83,9 @@ export default defineConfig({
       headers.forEach((header) => {
         const { level, slug, children, title, link } = header
 
-        // We only track h2
-        if (level !== 2) return
-
         const progressIdentifier: ProgressIdentifier = {
           title: pageData.title,
-          identifier: `${pageData.filePath.replace('.md', '')}/${slug}`,
+          identifier: `${pageData.filePath}/${slug}`,
           header: title,
           level,
           tutorialType: pageData.frontmatter.tutorialType,
@@ -131,8 +131,8 @@ export default defineConfig({
         console.error('Error when inserting identifiers', error)
       }
     }
-  },*/
-
+  },
+*/
   vite: {
     plugins: [
       tailwindcss(),
@@ -146,3 +146,11 @@ export default defineConfig({
     },
   },
 })
+
+interface ProgressIdentifier {
+  title: string,
+  identifier: string,
+  header: string,
+  level: number,
+  tutorialType: 'track' | 'tutorial' | 'factoid',
+}
