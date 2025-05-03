@@ -6,7 +6,7 @@ title: Create your first project
 When you first launch `Redot` you will be met with an empty project manager.
 ![The Redot project manager](../../assets/images/3d-3rdp-action-rpg/project-manager-empty.png)
 
-You'r first order of business is thus to create your own project. You do that by
+Your first order of business is thus to create your own project. You do that by
 clicking the `Create`button.
 ![The create new project button](../../assets/images/3d-3rdp-action-rpg/project-manager-create-button.png)
 
