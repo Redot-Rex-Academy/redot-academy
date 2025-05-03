@@ -20,7 +20,7 @@ unless you have a cool name in mind.
 :::
 [Create your first project](/pages/tutorials/create-your-first-project)\
 Once we have set up our project we will want to create our first scene, to learn how to do this, follow the tutorial below and return to this track when you are ready.\
-[Create your first scene](/pages/tutorials/set-up-initial-2d-scene)
+[Create your first 2D scene](/pages/tutorials/set-up-initial-2d-scene)
 Creating our first scene is the first step in the door towards our finished game. Though a small step, remember;
 
 _One who moves a mountain begins by carrying away small stones._
