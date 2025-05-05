@@ -2,7 +2,7 @@
 title: Autoload
 ---
 
-# Autoload and it uses
+# Autoload and it's uses
 
 `Redot` does not have global variables or static variables. But it does have the Autoload system to accomplishes many of the same tasks. This is important for keeping scores between levels, and the progress of the game across multiple scenes.
 

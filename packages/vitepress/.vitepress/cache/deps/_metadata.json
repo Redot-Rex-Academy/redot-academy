@@ -1,61 +1,61 @@
 {
-  "hash": "15e302ef",
-  "configHash": "692ab7a6",
+  "hash": "5882020c",
+  "configHash": "a2bddfa1",
   "lockfileHash": "e3b0c442",
-  "browserHash": "3a78a06a",
+  "browserHash": "3c063722",
   "optimized": {
     "vue": {
       "src": "../../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "8edea293",
+      "fileHash": "eb54fdbd",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "8a450cfb",
+      "fileHash": "4d949fc2",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../../node_modules/vitepress/node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "85a13b4b",
+      "fileHash": "1e59acf3",
       "needsInterop": false
     },
     "vitepress > @vueuse/integrations/useFocusTrap": {
       "src": "../../../../../node_modules/@vueuse/integrations/useFocusTrap.mjs",
       "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "adee8d48",
+      "fileHash": "90a02e2f",
       "needsInterop": false
     },
     "vitepress > mark.js/src/vanilla.js": {
       "src": "../../../../../node_modules/mark.js/src/vanilla.js",
       "file": "vitepress___mark__js_src_vanilla__js.js",
-      "fileHash": "38ab2aa3",
+      "fileHash": "853e0530",
       "needsInterop": false
     },
     "vitepress > minisearch": {
       "src": "../../../../../node_modules/minisearch/dist/es/index.js",
       "file": "vitepress___minisearch.js",
-      "fileHash": "7263bd26",
+      "fileHash": "be5e5e45",
       "needsInterop": false
     },
     "pinia": {
       "src": "../../../../../node_modules/pinia/dist/pinia.mjs",
       "file": "pinia.js",
-      "fileHash": "52b6e1dd",
+      "fileHash": "ac92c943",
       "needsInterop": false
     },
     "@heroicons/vue/16/solid": {
       "src": "../../../../../node_modules/@heroicons/vue/16/solid/esm/index.js",
       "file": "@heroicons_vue_16_solid.js",
-      "fileHash": "27445895",
+      "fileHash": "e478d6ea",
       "needsInterop": false
     },
     "@supabase/supabase-js": {
       "src": "../../../../../node_modules/@supabase/supabase-js/dist/module/index.js",
       "file": "@supabase_supabase-js.js",
-      "fileHash": "0d0d255a",
+      "fileHash": "c4f53ad6",
       "needsInterop": false
     }
   },
