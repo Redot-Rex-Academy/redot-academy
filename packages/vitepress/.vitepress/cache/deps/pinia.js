@@ -1,6 +1,6 @@
 import {
   setupDevToolsPlugin
-} from "./chunk-TRWOHLVZ.js";
+} from "./chunk-N7XSAIW6.js";
 import {
   computed,
   effectScope,
@@ -73,8 +73,22 @@ function click(node) {
   try {
     node.dispatchEvent(new MouseEvent("click"));
   } catch (e) {
-    const evt = document.createEvent("MouseEvents");
-    evt.initMouseEvent("click", true, true, window, 0, 0, 0, 80, 20, false, false, false, false, 0, null);
+    const evt = new MouseEvent("click", {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+      detail: 0,
+      screenX: 80,
+      screenY: 20,
+      clientX: 80,
+      clientY: 20,
+      ctrlKey: false,
+      altKey: false,
+      shiftKey: false,
+      metaKey: false,
+      button: 0,
+      relatedTarget: null
+    });
     node.dispatchEvent(evt);
   }
 }
@@ -931,7 +945,7 @@ function skipHydrate(obj) {
   return Object.defineProperty(obj, skipHydrateSymbol, {});
 }
 function shouldHydrate(obj) {
-  return !isPlainObject(obj) || !obj.hasOwnProperty(skipHydrateSymbol);
+  return !isPlainObject(obj) || !Object.prototype.hasOwnProperty.call(obj, skipHydrateSymbol);
 }
 var { assign } = Object;
 function isComputed(o) {
@@ -1451,7 +1465,7 @@ export {
 
 pinia/dist/pinia.mjs:
   (*!
-   * pinia v3.0.1
+   * pinia v3.0.2
    * (c) 2025 Eduardo San Martin Morote
    * @license MIT
    *)

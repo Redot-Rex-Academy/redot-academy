@@ -3831,7 +3831,7 @@ var StorageClient = class extends StorageBucketApi {
 };
 
 // node_modules/@supabase/supabase-js/dist/module/lib/version.js
-var version3 = "2.49.3";
+var version3 = "2.49.4";
 
 // node_modules/@supabase/supabase-js/dist/module/lib/constants.js
 var JS_ENV = "";

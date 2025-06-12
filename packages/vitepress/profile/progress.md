@@ -61,7 +61,7 @@ const sortTracks = (property: string, direction: number) => tracks.value.sort((a
   <div class="place-self-center min-w-[300px] w-full lg:min-w-[748px] max-w-[1200px] p-8">
     <div class="grid grid-cols-3 gap-8 border-1 border-neutral-600 rounded-lg p-8">
       <div v-if="pages > 1" class="col-span-full place-self-end">
-        <div class="grid cols-span-full grid-flow-col bg-neutral-800 border-neutral-600 border-1 rounded-full overflow-hidden">
+        <div class="grid grid-flow-col bg-neutral-800 border-neutral-600 border-1 rounded-full overflow-hidden">
           <button
             class="!p-2 !pl-4 hover:!bg-neutral-700 rounded-l-full"
             :class="[

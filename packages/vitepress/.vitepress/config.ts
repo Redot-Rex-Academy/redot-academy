@@ -43,8 +43,8 @@ export default defineConfig({
         {
           items: [
             { text: 'Dashboard', link: '/profile' },
+            { text: 'Bookmarks', link: '/profile/bookmarks' },
             { text: 'Progress', link: '/profile/progress' },
-            // { text: 'Bookmarks', link: '/profile/bookmarks' },
           ],
         },
       ],
@@ -141,6 +141,7 @@ export default defineConfig({
     resolve: {
       alias: {
         '@default-theme': 'vitepress/dist/client/theme-default',
+        '@app': __dirname,
       }
     },
   },

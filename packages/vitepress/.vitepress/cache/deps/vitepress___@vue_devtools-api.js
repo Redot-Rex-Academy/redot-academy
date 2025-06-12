@@ -5,7 +5,7 @@ import {
   onDevToolsConnected,
   removeCustomCommand,
   setupDevToolsPlugin
-} from "./chunk-TRWOHLVZ.js";
+} from "./chunk-N7XSAIW6.js";
 import "./chunk-V4OQ3NZ2.js";
 export {
   addCustomCommand,
