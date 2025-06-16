@@ -1,13 +1,18 @@
 <script lang="ts" setup generic="T">
-import { computed, ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue'
 
-const props = defineProps<{
+import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/vue/24/solid'
+
+const props = withDefaults(defineProps<{
   items: Array<T>,
   itemsPerPage?: number,
-}>()
+}>(), {
+  itemsPerPage: 10,
+})
 
 const page = ref(1)
 const sortedBy = ref<string | null>(null)
+const sortDirections = ref<Record<string, 'asc' | 'desc'>>({})
 const pages = computed(() => {
   return Math.ceil(props.items.length / (props.itemsPerPage || 10))
 })
@@ -22,10 +27,17 @@ const sortedItems = computed(() => {
   return [...props.items].sort((a, b) => {
     const aValue = a[sortedBy.value!];
     const bValue = b[sortedBy.value!];
-    if (typeof aValue === 'string' && typeof bValue === 'string') {
-      return aValue.localeCompare(bValue);
+    if (sortDirections.value[sortedBy.value!] === 'asc') {
+      if (typeof aValue === 'string' && typeof bValue === 'string') {
+        return aValue.localeCompare(bValue);
+      }
+      return aValue > bValue ? 1 : -1;
+    } else {
+      if (typeof aValue === 'string' && typeof bValue === 'string') {
+        return bValue.localeCompare(aValue);
+      }
+      return bValue > aValue ? 1 : -1;
     }
-    return aValue > bValue ? 1 : -1;
   });
 });
 </script>
@@ -79,9 +91,18 @@ const sortedItems = computed(() => {
       <div
         v-for="(colName, j) in columnNames"
         :key="j"
-        class="font-bold"
-        @click="sortedBy = colName"
+        class="font-bold relative"
+        @click="() => {
+          sortedBy = colName
+          sortDirections[colName] = sortDirections[colName] === 'asc' ? 'desc' : 'asc';
+        }"
       >
+        <template v-if="sortedBy == colName">
+          <div class="absolute -left-5 min-h-4 min-w-4 top-1/2 -translate-y-1/2">
+            <span v-if="sortDirections[colName] === 'asc'"><ChevronUpIcon /></span>
+            <span v-else><ChevronDownIcon /></span>
+          </div>
+        </template>
         {{ colName }}
       </div>
     </div>
@@ -91,8 +112,8 @@ const sortedItems = computed(() => {
       :key="i"
       class="grid grid-cols-subgrid col-span-full"
     >
-      <div v-for="(colName, j) of item">
-        {{ colName }}
+      <div v-for="(value) of item">
+        {{ value }}
       </div>
     </div>
   </div>
