@@ -11,6 +11,24 @@ import VPSkipLink from 'vitepress/dist/client/theme-default/components/VPSkipLin
 import { useData } from 'vitepress/dist/client/theme-default/composables/data.js'
 import { useCloseSidebarOnEscape, useSidebar } from 'vitepress/dist/client/theme-default/composables/sidebar.js'
 
+import useAuth from './composables/useAuth'
+import useBookmarks from './composables/useBookmarks'
+
+const { authenticated } = useAuth()
+const { bookmarks, fetchBookmarks } = useBookmarks()
+
+watch(authenticated, () => {
+  if (!document) {
+    return
+  }
+
+  if (authenticated.value) {
+    fetchBookmarks()
+  } else {
+    bookmarks.value = []
+  }
+}, { immediate: true })
+
 const {
   isOpen: isSidebarOpen,
   open: openSidebar,

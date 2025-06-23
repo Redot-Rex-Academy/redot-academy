@@ -2,6 +2,7 @@
 import { useData } from 'vitepress'
 import CustomLayout from './CustomLayout.vue'
 import { nextTick, provide, onMounted } from 'vue'
+import Bookmark from './components/RABookmark.vue'
 import BackLink from './components/RABackLink.vue'
 import ProfileNavItem from './components/RAProfileNavBarItem.vue'
 import ProgressTracker from './components/RAProgressTracker.vue'
@@ -53,6 +54,7 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
     <template #sidebar-nav-before></template>
     <template #aside-top>
       <ClientOnly>
+        <Bookmark />
         <BackLink />
       </ClientOnly>
     </template>

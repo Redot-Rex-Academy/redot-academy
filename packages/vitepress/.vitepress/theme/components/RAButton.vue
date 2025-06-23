@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { FunctionalComponent } from 'vue'
 import { computed } from 'vue'
 import { normalizeLink } from 'vitepress/dist/client/theme-default/support/utils.js'
 import { EXTERNAL_URL_RE } from 'vitepress/dist/client//shared.js'
@@ -12,6 +13,7 @@ interface Props {
   target?: string;
   rel?: string;
   disabled?: boolean;
+  icon?: FunctionalComponent;
 }
 const props = withDefaults(defineProps<Props>(), {
   size: 'medium',
@@ -35,13 +37,15 @@ const component = computed(() => {
       size,
       theme,
       disabled ? 'cursor-not-allowed' : '',
+      props.icon ? '!grid !grid-cols-[24px_auto]' : '',
     ]"
     :href="href ? normalizeLink(href) : undefined"
     :target="props.target ?? (isExternal ? '_blank' : undefined)"
     :rel="props.rel ?? (isExternal ? 'noreferrer' : undefined)"
     :disabled="props.disabled && component === 'button'"
   >
-    {{ text }}
+    <component v-if="icon" :is="icon" class="place-self-center" />
+    <span>{{ text }}</span>
   </component>
 </template>
 

@@ -1,10 +1,12 @@
 <script lang="ts" setup generic="T">
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 
 import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/vue/24/solid'
 
 const props = withDefaults(defineProps<{
   items: Array<T>,
+  columnDisplay?: (items: Array<T>) => Array<Record<string, string>>,
+  valueDisplay?: (items: Array<T>) => Array<Record<string, string>>,
   itemsPerPage?: number,
 }>(), {
   itemsPerPage: 10,
@@ -16,12 +18,11 @@ const sortDirections = ref<Record<string, 'asc' | 'desc'>>({})
 const pages = computed(() => {
   return Math.ceil(props.items.length / (props.itemsPerPage || 10))
 })
+
 const templateColumns = computed(() => {
   return `repeat(${Object.keys(props.items[0] || {}).length + 1}, minmax(0, 1fr))`
 })
-const columnNames = computed(() => {
-  return Object.keys(props.items[0] || {})
-})
+
 const sortedItems = computed(() => {
   if (!sortedBy.value) return props.items;
   return [...props.items].sort((a, b) => {
@@ -39,6 +40,29 @@ const sortedItems = computed(() => {
       return bValue > aValue ? 1 : -1;
     }
   });
+});
+
+const columns = computed((): Array<Array<string>> => {
+  if (props.columnDisplay) {
+    return props.columnDisplay(props.items).map(item => {
+      const columnKey = Object.keys(item)[0];
+      return [columnKey, item[columnKey]];
+    });
+  }
+
+  return Object.keys(props.items[0] || {}).map(key => [key, key]);
+})
+
+const values = computed((): Array<Record<string, string>> => {
+  if (props.valueDisplay) return props.valueDisplay(sortedItems.value)
+
+  return sortedItems.value.map(item => {
+    const result: Record<string, string> = {}
+    for (const key in item) {
+      result[key] = String(item[key])
+    }
+    return result
+  })
 });
 </script>
 
@@ -89,31 +113,31 @@ const sortedItems = computed(() => {
 
     <div class="grid grid-cols-subgrid col-span-full capitalize cursor-pointer">
       <div
-        v-for="(colName, j) in columnNames"
+        v-for="(column, j) in columns"
         :key="j"
         class="font-bold relative"
         @click="() => {
-          sortedBy = colName
-          sortDirections[colName] = sortDirections[colName] === 'asc' ? 'desc' : 'asc';
+          sortedBy = column[0]
+          sortDirections[column[0]] = sortDirections[column[0]] === 'asc' ? 'desc' : 'asc';
         }"
       >
-        <template v-if="sortedBy == colName">
+        <template v-if="sortedBy == column[0]">
           <div class="absolute -left-5 min-h-4 min-w-4 top-1/2 -translate-y-1/2">
-            <span v-if="sortDirections[colName] === 'asc'"><ChevronUpIcon /></span>
+            <span v-if="sortDirections[column[0]] === 'asc'"><ChevronUpIcon /></span>
             <span v-else><ChevronDownIcon /></span>
           </div>
         </template>
-        {{ colName }}
+        {{ column[1] }}
       </div>
     </div>
 
     <div
-      v-for="(item, i) in sortedItems.slice((page - 1) * itemsPerPage, page * itemsPerPage)"
+      v-for="(item, i) in values.slice((page - 1) * itemsPerPage, page * itemsPerPage)"
       :key="i"
       class="grid grid-cols-subgrid col-span-full"
     >
-      <div v-for="(value) of item">
-        {{ value }}
+      <div v-for="(val, y) in item" :key="`${i}-${y}`">
+        {{  Object.values(val)[0]  }}
       </div>
     </div>
   </div>

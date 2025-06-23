@@ -20,7 +20,7 @@ router.onBeforeRouteChange = () => {
 </script>
 
 <template>
-  <a :href="to">
-    {{ name }}
+  <a :href="backLink.r">
+    {{ backLink.b }}
   </a>
 </template>

@@ -5,7 +5,7 @@ import userStore from '../stores/userStore'
 
 export default () => {
   const { client } = useClient()
-  const { user, loading, authenticating } = storeToRefs(userStore())
+  const { user, loading, authenticating, authenticated } = storeToRefs(userStore())
 
   const authenticate = async () => {
     authenticating.value = loading.value = true
@@ -43,6 +43,9 @@ export default () => {
   }
 
   return {
+    user,
+    authenticated,
+    loading,
     authenticate,
     login,
     logout,
