@@ -1,4 +1,4 @@
-<script lang="ts" setup generic="T">
+<script lang="ts" setup generic="T extends Record<string, any>">
 import { computed, ref } from 'vue'
 
 import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/vue/24/solid'
@@ -25,17 +25,17 @@ const templateColumns = computed(() => {
 
 const sortedItems = computed(() => {
   if (!sortedBy.value) return props.items;
-  return [...props.items].sort((a, b) => {
-    const aValue = a[sortedBy.value!];
-    const bValue = b[sortedBy.value!];
+  return [...props.items].sort((a: T, b: T) => {
+    const aValue = a[sortedBy.value!] as T;
+    const bValue = b[sortedBy.value!] as T;
     if (sortDirections.value[sortedBy.value!] === 'asc') {
       if (typeof aValue === 'string' && typeof bValue === 'string') {
-        return aValue.localeCompare(bValue);
+        return (aValue as string).localeCompare(bValue as string);
       }
       return aValue > bValue ? 1 : -1;
     } else {
       if (typeof aValue === 'string' && typeof bValue === 'string') {
-        return bValue.localeCompare(aValue);
+        return (bValue as string).localeCompare(aValue as string);
       }
       return bValue > aValue ? 1 : -1;
     }

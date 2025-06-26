@@ -51,7 +51,7 @@ export default () => {
     return true
   }
 
-  const addBookmark = async (bookmark) => {
+  const addBookmark = async (bookmark: Bookmark) => {
     console.log({ bookmark })
     if (!user.value) return false
 

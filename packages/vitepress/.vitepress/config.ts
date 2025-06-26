@@ -1,6 +1,6 @@
 import type { ProgressIdentifier } from './theme/models/ProgressIdentifiers'
 
-import { defineConfig, Header } from 'vitepress'
+import { defineConfig } from 'vitepress'
 import tailwindcss from '@tailwindcss/vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
 

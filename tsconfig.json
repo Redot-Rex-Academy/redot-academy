@@ -23,5 +23,12 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false
-  }
+  },
+
+  "include": [
+    "packages/vitepress/.vitepress/**/*.ts",
+    "packages/vitepress/.vitepress/**/*.tsx",
+    "packages/vitepress/.vitepress/**/*.vue",
+    "packages/vitepress/.vitepress/**/*.md"
+  ]
 }
