@@ -46,6 +46,8 @@ export default () => {
       return false
     }
 
+    bookmarks.value = bookmarks.value.filter(b => b.id !== bookmark.id)
+
     return true
   }
 
@@ -61,13 +63,14 @@ export default () => {
         path: bookmark.path,
         updated_at: bookmark.updated_at,
       })
+      .select()
 
     if (error) {
       console.error('Error adding bookmark:', error)
       return false
     }
 
-    bookmarks.value.push(bookmark)
+    bookmarks.value.push(data[0])
     return true
   }
 
