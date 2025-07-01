@@ -22,10 +22,16 @@
     // Some stricter flags (disabled by default)
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false
+    "noPropertyAccessFromIndexSignature": false,
+
+    "typeRoots": [
+      "./node_modules/@types",
+      "./packages/vitepress/types"
+    ],
   },
 
   "include": [
+    "packages/vitepress/**/*.ts",
     "packages/vitepress/.vitepress/**/*.ts",
     "packages/vitepress/.vitepress/**/*.tsx",
     "packages/vitepress/.vitepress/**/*.vue",

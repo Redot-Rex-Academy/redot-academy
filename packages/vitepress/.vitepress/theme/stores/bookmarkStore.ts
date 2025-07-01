@@ -4,11 +4,11 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export default defineStore('bookmark', () => {
-  const loading = ref(false)
+  const state = ref<'error' | 'success' | 'loading' | 'default'>('default')
   const bookmarks = ref<Bookmark[]>([])
 
   return {
-    loading,
+    state,
     bookmarks,
   }
 })
