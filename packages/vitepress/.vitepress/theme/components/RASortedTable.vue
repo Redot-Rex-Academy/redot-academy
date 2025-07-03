@@ -20,7 +20,8 @@ const pages = computed(() => {
 })
 
 const templateColumns = computed(() => {
-  return `repeat(${Object.keys(props.items[0] || {}).length + 1}, minmax(0, 1fr))`
+  const numCols = props.columnDisplay ? props.columnDisplay(props.items).length : Object.keys(props.items[0] || {}).length;
+  return `repeat(${numCols}, minmax(0, 1fr))`
 })
 
 const sortedItems = computed(() => {
@@ -131,15 +132,20 @@ const values = computed((): Array<Record<string, string>> => {
       </div>
     </div>
 
-    <div
+    <template
       v-for="(item, i) in values.slice((page - 1) * itemsPerPage, page * itemsPerPage)"
       :key="i"
-      class="grid grid-cols-subgrid col-span-full"
     >
-      <div v-for="(val, y) in item" :key="`${i}-${y}`">
-        {{  Object.values(val)[0]  }}
-      </div>
-    </div>
+      <slot :row="item" :n="i">
+        <div class="grid grid-cols-subgrid col-span-full">
+          <template v-for="(val, y) in item" :key="`${i}-${y}`">
+            <div>
+              {{ Object.values(val)[0] }}
+            </div>
+          </template>
+        </div>
+      </slot>
+    </template>
   </div>
 </template>
 

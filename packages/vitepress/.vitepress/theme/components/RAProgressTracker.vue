@@ -24,6 +24,7 @@ setTimeout(() => {
     })
   })
 
+  // @ts-ignore-next-line
   headings = [...document.querySelectorAll<HTMLHeadingElement>('.vp-doc h2')]
   console.log('headings', headings)
 

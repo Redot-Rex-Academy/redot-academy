@@ -10,7 +10,7 @@ export default () => {
   const { client } = useClient()
   const { user } = useAuth()
 
-  const { bookmarks, loading } = storeToRefs(useBookmarkStore())
+  const { bookmarks, state } = storeToRefs(useBookmarkStore())
 
   const fetchBookmarks = async () => {
     const { data, error } = await client
@@ -76,7 +76,7 @@ export default () => {
 
   return {
     bookmarks,
-    loading,
+    state,
     fetchBookmarks,
     toggleBoomkark,
     addBookmark,
