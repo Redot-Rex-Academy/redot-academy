@@ -4,7 +4,7 @@ title: The 2D Player
 
 # 2D Player Controller
 
-this tutorial will give you the basics for setting up a player chaarcters for 2D games.
+this tutorial will give you the basics for setting up a player characters for 2D games.
 Included are:
 * The character controller
 * the player sprites and art work 
