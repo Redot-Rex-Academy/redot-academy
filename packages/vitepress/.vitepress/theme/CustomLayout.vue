@@ -18,7 +18,7 @@ const { authenticated } = useAuth()
 const { bookmarks, fetchBookmarks } = useBookmarks()
 
 watch(authenticated, () => {
-  if (!document) {
+  if (typeof document === "undefined") {
     return
   }
 

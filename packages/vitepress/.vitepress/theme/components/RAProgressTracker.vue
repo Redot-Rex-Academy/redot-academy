@@ -11,7 +11,7 @@ let headings: HTMLHeadingElement[] = []
 let localProgress: Set<string> = new Set<string>([])
 
 setTimeout(() => {
-  if (!document) return
+  if (typeof document === "undefined") return
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
