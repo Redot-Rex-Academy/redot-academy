@@ -1,5 +1,9 @@
 # redot-academy
 
+## Preview Builds
+* [preview deployment](https://celadon-cannoli-4300d3.netlify.app)
+* [Guy Severn develop](https://guysevern-develop--celadon-cannoli-4300d3.netlify.app)
+
 ## Local development
 
 ### Prerequisites
