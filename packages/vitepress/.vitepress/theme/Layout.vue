@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
 import CustomLayout from './CustomLayout.vue'
-import { nextTick, provide, onMounted } from 'vue'
+import { nextTick, provide } from 'vue'
 import Bookmark from './components/RABookmark.vue'
-import BackLink from './components/RABackLink.vue'
 import ProfileNavItem from './components/RAProfileNavBarItem.vue'
 import ProgressTracker from './components/RAProgressTracker.vue'
 
@@ -55,7 +54,6 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
     <template #aside-top>
       <ClientOnly>
         <Bookmark />
-        <BackLink />
       </ClientOnly>
     </template>
     </CustomLayout>

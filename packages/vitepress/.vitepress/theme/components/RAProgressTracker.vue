@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useTemplateRef } from 'vue'
-import { useIntersectionObserver } from '@vueuse/core'
-
 import useProgress from '../composables/useProgress'
 
 const {
@@ -11,7 +8,7 @@ let headings: HTMLHeadingElement[] = []
 let localProgress: Set<string> = new Set<string>([])
 
 setTimeout(() => {
-  if (!document) return
+  if (typeof document === "undefined") return
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {

@@ -1,7 +1,6 @@
 ---
 title: Progress Tracking Test
 type: track
-backlinked: true
 tutorialType: 'track'
 ---
 
